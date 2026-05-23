@@ -1,0 +1,32 @@
+{
+  "annotations": {
+    "changelogDate": "20260523124042"
+  },
+  "clientRootFolder": "historique",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "searchDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "request",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "responseDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "responseDay",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "historique",
+  "name": "SearchHistory",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "no"
+}

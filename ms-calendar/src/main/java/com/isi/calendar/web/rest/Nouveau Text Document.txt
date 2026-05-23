@@ -1,0 +1,53 @@
+package com.isi.calendar.web.rest;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api")
+public class DayFinderResource {
+
+    private final RestTemplate restTemplate = new RestTemplate();
+
+    @GetMapping("/dayfinder")
+    public ResponseEntity<Map<String, String>> getDayOfWeek(@RequestParam("date") String dateStr) {
+
+        // 1. Parser la date
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate date = LocalDate.parse(dateStr, formatter);
+
+        // 2. Calculer le jour en français
+        String[] jours = {"Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"};
+        String jour = jours[date.getDayOfWeek().getValue() - 1];
+
+        // 3. Préparer la réponse
+        Map<String, String> response = new LinkedHashMap<>();
+        response.put("date", dateStr.replace("-", "/"));
+        response.put("dayOfWeek", jour);
+
+        // 4. Sauvegarder dans l'historique
+        Map<String, String> historyPayload = new LinkedHashMap<>();
+        historyPayload.put("request", dateStr);
+        historyPayload.put("responseDate", dateStr.replace("-", "/"));
+        historyPayload.put("responseDay", jour);
+
+        try {
+            restTemplate.postForObject(
+                "http://localhost:8082/api/search-histories",
+                historyPayload,
+                Map.class
+            );
+        } catch (Exception e) {
+            // On continue même si l'historique échoue
+            System.err.println("Historique indisponible : " + e.getMessage());
+        }
+
+        return ResponseEntity.ok(response);
+    }
+}
