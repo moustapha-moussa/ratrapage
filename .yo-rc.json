@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "applicationType": "gateway",
+    "authenticationType": "jwt",
+    "baseName": "gateway",
+    "buildTool": "maven",
+    "cacheProvider": null,
+    "clientFramework": "no",
+    "clientTestFrameworks": null,
+    "clientTheme": null,
+    "creationTimestamp": 1779539031872,
+    "databaseType": "no",
+    "devDatabaseType": null,
+    "enableHibernateCache": null,
+    "enableTranslation": false,
+    "entities": [],
+    "feignClient": null,
+    "jhipsterVersion": "8.11.0",
+    "jwtSecretKey": "Y2UxNGM3NjNkM2YwZjRiYTg5ZDE5ODk3MjM4ZWY0Zjg4YjE3OWQ3NjFiYmY4Y2VlMTkyYzY3ODI4ODkxZmJhZGY2NjBmYWVmM2Q5M2QyZWY3ZDJlN2UyNjc2M2I1NzcxNjlhMTU2YTgyZDg4ZWNhMDkwZTA5NGE5MjZmMDhiYTY=",
+    "microfrontend": null,
+    "microfrontends": [],
+    "nativeLanguage": "fr",
+    "packageName": "com.isi.gateway",
+    "prodDatabaseType": null,
+    "reactive": true,
+    "serverPort": 8080,
+    "serviceDiscoveryType": "eureka",
+    "skipClient": true,
+    "syncUserWithIdp": null,
+    "testFrameworks": [],
+    "withAdminUi": null
+  }
+}
